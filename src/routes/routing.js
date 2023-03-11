@@ -10,7 +10,7 @@ export function Routing(){
         <>
         <Routes>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/register' element={<Signup/>}/>
+        <Route path='/signup' element={<Signup/>}/>
         <Route path='/add' element={<AddProduct/>}/>
         <Route path='/update' element={<UpdateProduct/>}/>
         </Routes>
