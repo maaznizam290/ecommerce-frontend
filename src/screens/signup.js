@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import {useNavigate} from 'react-router-dom';
 import Header from "../components/header";
 function Signup()
 
 {
+    useEffect(()=>{
+    if(localStorage.getItem('user-info'))
+    {
+        navigate('/add');
+    }
+    },[])
     const [name,setName] = useState("");
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
