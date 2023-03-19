@@ -1,13 +1,18 @@
 import React from "react";
-import {useSelector} from 'react-redux';
-import { Navigate,useLocation } from "react-router-dom";
+import { Navigate,Outlet } from "react-router-dom";
+import AddProduct from "../../screens/addproduct";
+import UpdateProduct from "../../screens/updateproduct";
 
-export const ProtectedRoutes = ({children})=>{
-    const user = useSelector((state)=>state.user);
-    let location = useLocation();
+ const PrivateRoute= ()=>{
+    const auth = null;
 
-    if(!user.state.isAuthenticated){
-        return <Navigate to='/login' state={{from:location}} replace/>
-    }
-    return children;
-};
+    return auth ? <Outlet/> : <Navigate to='/add' element={<AddProduct/>} />
+}
+
+export default PrivateRoute;
+
+export const PrivateRoutes = (update)=>{
+        const updates = update;
+
+    return update ? <Outlet/> : <Navigate to='/update' element={<UpdateProduct/>}/>
+}
