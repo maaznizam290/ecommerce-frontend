@@ -5,7 +5,7 @@ export  function Login()
 {
     const navigate = useNavigate();
     useEffect(()=>{
-        if(localStorage.getItem('user-info'))
+        if(localStorage.getItem(''))
         {
             navigate('/add');
         }

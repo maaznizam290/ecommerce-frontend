@@ -1,18 +1,21 @@
-import React from "react";
-import { Navigate,Outlet } from "react-router-dom";
-import AddProduct from "../../screens/addproduct";
-import UpdateProduct from "../../screens/updateproduct";
+import { useEffect } from "react";
+import {  useNavigate } from "react-router-dom";
 
- const PrivateRoute= ()=>{
-    const auth = null;
 
-    return auth ? <Outlet/> : <Navigate to='/add' element={<AddProduct/>} />
+function Protect(props){
+    const {Cmp} = props;
+    const navigate = useNavigate();
+    useEffect(()=>{
+        let signup = localStorage.getItem('signup');
+        if(!signup){
+            navigate('/signup');
+        }
+    })
+    return(
+        <div>
+        <Cmp/>
+        </div>
+    )
 }
 
-export default PrivateRoute;
-
-export const PrivateRoutes = (update)=>{
-        const updates = update;
-
-    return update ? <Outlet/> : <Navigate to='/update' element={<UpdateProduct/>}/>
-}
+export default Protect;

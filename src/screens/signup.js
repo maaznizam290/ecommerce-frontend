@@ -4,16 +4,27 @@ import Header from "../components/header";
 function Signup()
 
 {
-    useEffect(()=>{
-    if(localStorage.getItem('user-info'))
-    {
+    const Signups  = ()=>{
+        localStorage.setItem('signup',true);
         navigate('/add');
     }
-    },[])
+    useEffect(()=>{
+        let signup = localStorage.getItem('signup');
+        // if(signup){
+        //     navigate('/add');
+        // }
+        // else{
+        //     navig
+        // }
+        signup ? navigate('/add') : navigate('/signup');
+       
+    },[]);
+
     const [name,setName] = useState("");
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const navigate = useNavigate();
+
    async function Signup(){
         let itemsObj = {name,email,password}
         console.warn(itemsObj);
@@ -40,7 +51,7 @@ function Signup()
     <br />   
     <input type="password" className="form-control" value={password} onChange={(e)=>setPassword(e.target.value)} name="password"  placeholder="password"/>   
     <br /> 
-    <button className="btn btn-primary" onClick={Signup}>Signup</button>
+    <button className="btn btn-primary" onClick={Signups}>Signup</button>
     </div>
      </>
 );
